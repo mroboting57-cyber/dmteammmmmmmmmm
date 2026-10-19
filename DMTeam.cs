@@ -1,4 +1,3 @@
-// DMTeam.cs — полный файл
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -22,7 +21,6 @@ namespace DMTeam
 {
     public enum LogLevel { Info, Ok, Err, Warn }
 
-    // ---------------- Тема ----------------
     static class Theme
     {
         public static readonly Color Bg        = Color.FromArgb(12, 13, 14);
@@ -71,7 +69,6 @@ namespace DMTeam
         }
     }
 
-    // ---------------- Лог ----------------
     public interface ILog { void Log(string msg, LogLevel lvl); }
 
     public class StatusLog : ILog
@@ -91,7 +88,6 @@ namespace DMTeam
         }
     }
 
-    // ---------------- UI помощники ----------------
     static class Ui
     {
         public static void StyleDarkList(ListView list)
@@ -206,7 +202,6 @@ namespace DMTeam
         }
     }
 
-    // ---------------- RButton ----------------
     public class RButton : Button
     {
         public Color FillColor = Theme.Card;
@@ -299,7 +294,6 @@ namespace DMTeam
         }
     }
 
-    // ---------------- Системные операции ----------------
     static class Sys
     {
         public static RegistryKey Split(string full, out string sub)
@@ -433,7 +427,6 @@ namespace DMTeam
         }
     }
 
-    // ---------------- Действия оптимизации ----------------
     static class Ops
     {
         public static readonly string[] TelemetryTasks = {
@@ -1217,9 +1210,6 @@ namespace DMTeam
                 log.Log(result, LogLevel.Ok);
         }
 
-        // ============================================================
-        // ПРИНУДИТЕЛЬНОЕ ОТКЛЮЧЕНИЕ ОБНОВЛЕНИЙ WINDOWS
-        // ============================================================
         public static void ForceDisableWindowsUpdate(ILog log)
         {
             log.Log("Принудительное отключение Windows Update...", LogLevel.Info);
@@ -1334,9 +1324,6 @@ namespace DMTeam
                 disabledTasks + " из " + updateTasks.Length + ".", LogLevel.Ok);
         }
 
-        // ============================================================
-        // ПРИНУДИТЕЛЬНОЕ ОТКЛЮЧЕНИЕ БЕЗОПАСНОСТИ WINDOWS
-        // ============================================================
         public static void ForceDisableWindowsSecurity(ILog log)
         {
             log.Log("Принудительное отключение Windows Security...", LogLevel.Info);
@@ -1464,9 +1451,6 @@ namespace DMTeam
             log.Log("Готово. Windows Update и Windows Security отключены.", LogLevel.Ok);
         }
 
-        // ============================================================
-        // ВОССТАНОВЛЕНИЕ WINDOWS SECURITY
-        // ============================================================
         public static void RestoreWindowsSecurity(ILog log)
         {
             log.Log("Восстановление Windows Security...", LogLevel.Info);
@@ -1560,9 +1544,6 @@ namespace DMTeam
                 securityTasks.Length + ".", LogLevel.Ok);
         }
 
-        // ============================================================
-        // ВОССТАНОВЛЕНИЕ ПОИСКА WINDOWS
-        // ============================================================
         public static void RestoreWindowsSearch(ILog log)
         {
             log.Log("Восстановление поиска Windows...", LogLevel.Info);
@@ -1595,9 +1576,6 @@ namespace DMTeam
             log.Log("Поиск Windows восстановлен.", LogLevel.Ok);
         }
 
-        // ============================================================
-        // СБРОС НАСТРОЕК WINDOWS К НОРМАЛЬНЫМ ЗНАЧЕНИЯМ
-        // ============================================================
         public static void RestoreDefaultSettings(ILog log)
         {
             log.Log("Сброс настроек Windows к нормальным значениям...", LogLevel.Info);
@@ -1639,9 +1617,6 @@ namespace DMTeam
             log.Log("Настройки Windows сброшены к нормальным значениям.", LogLevel.Ok);
         }
 
-        // ============================================================
-        // ПОЛНОЕ ВОССТАНОВЛЕНИЕ
-        // ============================================================
         public static void RestoreEverything(ILog log)
         {
             log.Log("Полное восстановление Windows...", LogLevel.Info);
@@ -1677,7 +1652,6 @@ namespace DMTeam
         }
     }
 
-    // ---------------- Элемент оптимизации ----------------
     public class OptItem
     {
         public string Group;
@@ -1739,7 +1713,6 @@ namespace DMTeam
         }
     }
 
-    // ---------------- Главное меню ----------------
     public class MainForm : Form
     {
         private Point dragStart;
@@ -3284,7 +3257,6 @@ namespace DMTeam
         }
     }
 
-    // ---------------- Окно оптимизации ----------------
     public class OptimizationWindow : Form, IMessageFilter
     {
         private Point dragStart;
